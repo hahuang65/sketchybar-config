@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-ICON_PADDING=5
-ICON_ACTIVE_PADDING=15
-
 case "$1" in
 1)
   ICON=""
@@ -19,7 +16,7 @@ case "$1" in
 esac
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set "$NAME" background.drawing=on icon="$ICON" icon.padding_left="$ICON_ACTIVE_PADDING" icon.padding_right="$ICON_ACTIVE_PADDING"
+  sketchybar --set "$NAME" icon="$ICON" icon.color=0xfff5a97f
 else
-  sketchybar --set "$NAME" background.drawing=off icon="$ICON" icon.padding_left="$ICON_PADDING" icon.padding_right="$ICON_PADDING"
+  sketchybar --set "$NAME" icon="$ICON" icon.color=0xffcad3f5
 fi

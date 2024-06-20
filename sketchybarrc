@@ -63,20 +63,20 @@ sketchybar --add item weather q \
   icon.font="$ICON_FONT:Bold:15.0" \
   update_freq=1800 \
   script="$PLUGIN_DIR/weather.sh" \
-  --subscribe weather system_woke
+  --subscribe weather system_woke mouse.clicked
 
 sketchybar --add item clock right \
   --set clock \
   icon=󰃰 \
   icon.color=0xffed8796 \
-  update_freq=10 \
+  update_freq=1 \
   script="$PLUGIN_DIR/clock.sh"
 
 sketchybar --add item battery right \
   --set battery \
-  update_freq=20 \
+  update_freq=30 \
   script="$PLUGIN_DIR/battery.sh" \
-  --subscribe power_source_change
+  --subscribe battery power_source_change
 
 sketchybar --add item wifi right \
   --set wifi \
@@ -84,7 +84,7 @@ sketchybar --add item wifi right \
   label.drawing=true \
   update_freq=60 \
   script="$PLUGIN_DIR/wifi.sh" \
-  --subscribe wifi_change
+  --subscribe wifi wifi_change mouse.clicked
 
 sketchybar --add item volume right \
   --set volume \

@@ -60,7 +60,7 @@ sketchybar --add item weather q \
   icon= \
   icon.color=0xfff5bde6 \
   icon.font="$ICON_FONT:Bold:15.0" \
-  update_freq=1800 \
+  update_freq=600 \
   script="$PLUGIN_DIR/weather.sh" \
   --subscribe weather system_woke mouse.clicked
 

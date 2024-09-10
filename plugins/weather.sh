@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-IP=$(curl -s https://ipinfo.io/ip)
-LOCATION=$(curl -s https://ipinfo.io/"$IP"/json | jq '.loc' | tr -d '"')
+LOCATION=$(curl -s http://ip-api.com/json?fields=region,city,zip,lat,lon | jq '.zip' | tr -d '"')
 WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION?format=j1")
 
 # Fallback if empty

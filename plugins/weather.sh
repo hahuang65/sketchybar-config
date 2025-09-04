@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-LOCATION=$(curl -s http://ip-api.com/json?fields=region,city,zip,lat,lon | jq '.zip' | tr -d '"')
-WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION?format=j1")
+WIFI_NAME=$(networksetup -listpreferredwirelessnetworks en0 | sed -n '2 p' | tr -d '\t')
+
+if [ "$WIFI_NAME" = "Kiwi" ]; then
+  WEATHER_JSON=$(curl -s "https://wttr.in/77386?format=j1")
+else
+  WEATHER_JSON=$(curl -s "https://wttr.in/?format=j1")
+fi
 
 # Fallback if empty
 if [ -z "$WEATHER_JSON" ]; then

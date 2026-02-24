@@ -19,8 +19,8 @@ sketchybar --bar \
 # label.color=0xffffffff
 # background.color=0x9924273a
 sketchybar --default \
-  background.color=0x66494d64 \
-  background.corner_radius=5 \
+  background.color=0x00000000 \
+  background.corner_radius=0 \
   background.padding_right=5 \
   background.height=26 \
   icon.font="$ICON_FONT:Medium:24.0" \
@@ -43,7 +43,21 @@ for sid in $(aerospace list-workspaces --all); do
     script="$PLUGIN_DIR/aerospace.sh $sid"
 done
 
-sketchybar --add item weather q \
+sketchybar --add item clock center \
+  --set clock \
+  icon= \
+  icon.color=0xffed8796 \
+  update_freq=1 \
+  script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item date center \
+  --set date \
+  icon= \
+  icon.color=0xffed8796 \
+  update_freq=60 \
+  script="$PLUGIN_DIR/date.sh"
+
+sketchybar --add item weather center \
   --set weather \
   icon.color=0xfff5bde6 \
   icon.font="$ICON_FONT:Bold:40.0" \
@@ -80,13 +94,6 @@ sketchybar \
   --add item weather.fc2     popup.weather --set weather.fc2     "${POPUP_DEFAULTS[@]}" \
   --add item weather.fc3     popup.weather --set weather.fc3     "${POPUP_DEFAULTS[@]}"
 
-sketchybar --add item clock right \
-  --set clock \
-  icon=󰃰 \
-  icon.color=0xffed8796 \
-  update_freq=1 \
-  script="$PLUGIN_DIR/clock.sh"
-
 sketchybar --add item battery right \
   --set battery \
   update_freq=30 \
@@ -96,6 +103,7 @@ sketchybar --add item battery right \
 sketchybar --add item wifi right \
   --set wifi \
   icon.color=0xffc6a0f6 \
+  icon.font="$ICON_FONT:Medium:34.0" \
   label.drawing=true \
   update_freq=60 \
   script="$PLUGIN_DIR/wifi.sh" \
@@ -104,7 +112,9 @@ sketchybar --add item wifi right \
 sketchybar --add item volume right \
   --set volume \
   icon.color=0xff8aadf4 \
+  icon.font="$ICON_FONT:Medium:34.0" \
   label.drawing=true \
+  update_freq=10 \
   script="$PLUGIN_DIR/volume.sh" \
   --subscribe volume volume_change
 

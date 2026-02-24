@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# If INFO isn't set (e.g. on periodic update or external monitor), query it
+if [[ -z "$INFO" ]]; then
+  INFO=$(osascript -e 'output volume of (get volume settings)')
+fi
+
 case ${INFO} in
 0)
   ICON=""

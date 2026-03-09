@@ -13,7 +13,7 @@ elif [[ "$SENDER" == "mouse.exited" ]]; then
     exit 0
 fi
 
-sketchybar --set "$NAME" label="$(date '+%Y/%m/%d')"
+sketchybar --set "$NAME" label="$(date '+%a %Y/%m/%d')"
 
 # Update calendar popup lines
 idx=0
